@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+build/
+dist/
+*.spec.bak
+
+# Sanal ortamlar
+.venv/
+venv/
+env/
+
+# Ortam degiskenleri
+.env
+
+# Veritabani (seed_data.py ile yeniden olusturulabilir)
+*.db
+*.db-journal
+
+# Uygulama ciktilari
+/logs/
+/exports/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Test / onbellek
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+
+# Editör / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Gecici dosyalar
+_gen_*.py
+_icon_preview.html

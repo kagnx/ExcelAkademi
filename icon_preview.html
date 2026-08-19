@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>İkon Tasarım Seçenekleri</title>
+    <style>
+        body { background: #1a1a2e; color: #eee; font-family: 'Segoe UI', sans-serif; padding: 30px; margin: 0; }
+        h1 { text-align: center; color: #00e676; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .card { background: #16213e; border-radius: 16px; padding: 24px; text-align: center; border: 2px solid transparent; transition: all 0.3s; cursor: pointer; }
+        .card:hover { border-color: #00e676; transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,230,118,0.2); }
+        .card img { width: 128px; height: 128px; margin: 16px auto; display: block; image-rendering: auto; }
+        .card h3 { margin: 8px 0 4px; font-size: 16px; color: #fff; }
+        .card p { margin: 4px 0 0; font-size: 12px; color: #aaa; }
+        .card .colors { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+        .card .colors span { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #333; }
+        .sizes { display: flex; gap: 12px; justify-content: center; margin-top: 12px; }
+        .sizes img { width: auto; height: auto; }
+        .current { border-color: #ffd700; }
+        .current h3::after { content: " ★"; color: #ffd700; }
+        footer { text-align: center; margin-top: 40px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🎨 Excel Master Akademisi — İkon Tasarım Seçenekleri</h1>
+    <div class="grid">
+        <div class="card" onclick="selectIcon('app_icon')">
+            <img src="app/ui/resources/app_icon.png" alt="Mevcut">
+            <h3>📗 Mevcut (Yeşil)</h3>
+            <p>Klasik Excel yeşili, gradient arka plan</p>
+            <div class="colors">
+                <span style="background:#217346"></span>
+                <span style="background:#0B5C33"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_blue_gradient')">
+            <img src="app/ui/resources/icon_blue_gradient.png" alt="Mavi Gradient">
+            <h3>📘 Mavi Gradient</h3>
+            <p>Modern mavi tonları, dikey gradient</p>
+            <div class="colors">
+                <span style="background:#093C8C"></span>
+                <span style="background:#1872C8"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_dark_gold')">
+            <img src="app/ui/resources/icon_dark_gold.png" alt="Koyu Yeşil + Altın">
+            <h3>👑 Koyu Yeşil + Altın</h3>
+            <p>Premium görünüm, altın vurgular</p>
+            <div class="colors">
+                <span style="background:#0F3423"></span>
+                <span style="background:#D4AF37"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_flat_green')">
+            <img src="app/ui/resources/icon_flat_green.png" alt="Flat Modern">
+            <h3>🟢 Flat Modern</h3>
+            <p>Minimal, düz tasarım, canlı yeşil</p>
+            <div class="colors">
+                <span style="background:#228B54"></span>
+                <span style="background:#FFFFFF"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_dark_neon')">
+            <img src="app/ui/resources/icon_dark_neon.png" alt="Koyu Neon">
+            <h3>💚 Koyu Tema + Neon</h3>
+            <p>Dark mode uyumlu, neon yeşil</p>
+            <div class="colors">
+                <span style="background:#1E1E24"></span>
+                <span style="background:#00E676"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_corporate')">
+            <img src="app/ui/resources/icon_corporate.png" alt="Kurumsal">
+            <h3>🏢 Kurumsal Beyaz</h3>
+            <p>Profesyonel, beyaz arka plan</p>
+            <div class="colors">
+                <span style="background:#FAFAFC"></span>
+                <span style="background:#007846"></span>
+            </div>
+        </div>
+        <div class="card" onclick="selectIcon('icon_3d_shadow')">
+            <img src="app/ui/resources/icon_3d_shadow.png" alt="3D Gölge">
+            <h3>🎯 3D Gölge</h3>
+            <p>Derinlik efekti, gölgeli köşeler</p>
+            <div class="colors">
+                <span style="background:#217346"></span>
+                <span style="background:#2E8B57"></span>
+            </div>
+        </div>
+    </div>
+    <footer>Seçmek için bir karta tıklayın — Seçilen ikon app_icon.ico olarak ayarlanır</footer>
+
+    <script>
+        function selectIcon(name) {
+            // Kullanıcıya chosen icon adını göster
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('current'));
+            event.currentTarget.classList.add('current');
+            alert(`Seçilen: ${name}\n\nKopyalamak için:\ncp app/ui/resources/${name}.ico app/ui/resources/app_icon.ico`);
+        }
+    </script>
+</body>
+</html>
