@@ -119,6 +119,70 @@ class TestGenerateQuickReferenceCard:
         assert path.exists()
         assert "ÇOKETOPLA" in path.name
 
+    def test_rich_card_is_larger_than_basic_card(self, pdf_service, sample_category, session):
+        """Adım/ipucu/etiket içeren formül, sade formülden daha kapsamlı kart üretmeli."""
+        minimal = Formula(
+            category_id=sample_category.id,
+            name_tr="PİKSEL",
+            name_en="PX",
+            syntax_tr="=PİKSEL()",
+            short_description_tr="Sade açıklama.",
+            detailed_explanation_tr="Sade detay.",
+            example_formula="=PİKSEL()",
+            example_description_tr="Sade örnek.",
+            steps=None,
+            tags=None,
+            exercise_question_tr=None,
+            exercise_answer=None,
+            exercise_hint_tr=None,
+            difficulty=Difficulty.BASLANGIC,
+        )
+        rich = Formula(
+            category_id=sample_category.id,
+            name_tr="DÜŞEYARA",
+            name_en="VLOOKUP",
+            syntax_tr="=DÜŞEYARA(aranan_değer; tablo_aralığı; sütun_no; [yaklaşık])",
+            short_description_tr="Bir değer arar ve ilgili sütunu döndürür.",
+            detailed_explanation_tr="DÜŞEYARA, tablonun ilk sütununda arama yapar.",
+            example_formula="=DÜŞEYARA(\"Ali\";A1:C10;3;YANLIŞ)",
+            example_description_tr="A1:C10 aralığında Ali arar, 3. sütunu döndürür.",
+            example_result="Yılmaz",
+            steps=["Aralığı seçin.", "Sütun numarasını belirleyin.", "Tam eşleşme için YANLIŞ yazın."],
+            tags=["arama", "başvuru"],
+            exercise_question_tr="DÜŞEYARA ile tam eşleşme nasıl sağlanır?",
+            exercise_answer="=DÜŞEYARA(...;YANLIŞ)",
+            exercise_hint_tr="Son parametre YANLIŞ olmalı.",
+            difficulty=Difficulty.ORTA,
+        )
+        session.add_all([minimal, rich])
+        session.commit()
+
+        minimal_path = pdf_service.generate_quick_reference_card(minimal)
+        rich_path = pdf_service.generate_quick_reference_card(rich)
+        assert minimal_path.exists() and rich_path.exists()
+        assert minimal_path.stat().st_size > 0
+        # Kapsamlı içerik (detay + adımlar + alıştırma + etiketler) daha büyük kart üretir:
+        assert rich_path.stat().st_size > minimal_path.stat().st_size
+        assert "DÜŞEYARA" in rich_path.name
+
+    def test_card_filename_is_sanitized(self, pdf_service, sample_category, session):
+        formula = Formula(
+            category_id=sample_category.id,
+            name_tr='TE/ST<FORMÜL',
+            name_en="TEST",
+            syntax_tr="=TEST()",
+            short_description_tr="Test.",
+            detailed_explanation_tr="Açıklama.",
+            example_formula="=TEST(A1:A5)",
+            example_description_tr="Örnek.",
+            difficulty=Difficulty.BASLANGIC,
+        )
+        session.add(formula)
+        session.commit()
+        path = pdf_service.generate_quick_reference_card(formula)
+        assert path.exists()
+        assert not any(ch in path.name for ch in '<>:"/\\|?*')
+
     def test_formula_without_hint(self, pdf_service, sample_category, session):
         formula = Formula(
             category_id=sample_category.id,

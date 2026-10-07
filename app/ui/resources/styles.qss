@@ -1,16 +1,21 @@
 /* ==========================================================================
-   Excel Usta Akademisi — Fistik Yesili Tema v3
-   TAMAMEN yesil arka plan, BEYAZ yazi, buyuk font, max gorunurluk
+   Excel Usta Akademisi — Canli Acik Mor Tema
+   Doygun, canli acik mor renkler uzerine koyu mor arka planlar
+   Renk paleti:
+     Canli acik mor: #CE93D8 / #D4A5FF / #F0D0FF
+     Koyu mor arka:  #4A148C / #582C8C
+     Vurgu:          #BA68C8 / #AB47BC
+     Kart arka:      #FFFFFF
+     Kart yazi:      #4A148C
    ========================================================================== */
 
 * {
     font-family: "Segoe UI", "Ubuntu", "Noto Sans", sans-serif;
     font-size: 14px;
-    color: #FFFFFF;
 }
 
 #appRoot {
-    background-color: #2E7D32;
+    background-color: #F3E5F5;
     border-radius: 10px;
 }
 
@@ -18,68 +23,66 @@
    BASLIK CUBUGU
    ============================================================ */
 #titleBar {
-    background-color: #1B5E20;
+    background-color: #582C8C;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-bottom: 2px solid #4CAF50;
+    border-bottom: 3px solid #CE93D8;
 }
 
 #titleBarIcon {
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid #CE93D8;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(206, 147, 216, 0.25);
     padding: 2px;
 }
 
 #titleBarText {
-    color: #FFFFFF;
+    color: #F0D0FF;
     font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-weight: 800;
 }
 
 #titleBarVersion {
-    color: #C8E6C9;
+    color: #CE93D8;
     font-size: 11px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 #titleBarButton {
-    background-color: rgba(255, 255, 255, 0.18);
+    background-color: #BA68C8;
     color: #FFFFFF;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid #CE93D8;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 900;
-    min-width: 38px;
-    min-height: 30px;
+    min-width: 42px;
+    min-height: 34px;
     padding: 2px;
 }
 
 #titleBarButton:hover {
-    background-color: rgba(255, 255, 255, 0.35);
-    border-color: rgba(255, 255, 255, 0.6);
+    background-color: #CE93D8;
 }
 
 #closeButton {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #BA68C8;
     color: #FFFFFF;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid #CE93D8;
 }
 
 #closeButton:hover {
     background-color: #C62828;
-    color: #FFFFFF;
     border-color: #C62828;
+    color: #FFFFFF;
 }
 
 /* ============================================================
    SOL PANEL (SIDEBAR)
    ============================================================ */
 #sidebar {
-    background-color: #1B5E20;
+    background-color: #4A148C;
     min-width: 240px;
-    border-right: 2px solid #4CAF50;
+    border-right: 3px solid #CE93D8;
 }
 
 #brandIcon {
@@ -89,21 +92,21 @@
 }
 
 #brandTitle {
-    color: #FFFFFF;
+    color: #E8D0FF;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #brandSubtitle {
-    color: #C8E6C9;
+    color: #E8D0FF;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 #brandVersion {
-    color: #A5D6A7;
+    color: #E8D0FF;
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 /* ---- Navigasyon Listesi ---- */
@@ -111,9 +114,8 @@
     background-color: transparent;
     border: none;
     outline: none;
-    color: #FFFFFF;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 4px 8px;
 }
 
@@ -121,38 +123,40 @@
     padding: 12px 14px;
     border-radius: 10px;
     margin: 3px 4px;
-    color: #FFFFFF;
+    color: #E8D0FF;
+    font-weight: 800;
     background-color: transparent;
 }
 
 #navList::item:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(206, 147, 216, 0.22);
     color: #FFFFFF;
+    font-weight: 900;
 }
 
 #navList::item:selected {
-    background-color: #FFFFFF;
-    color: #1B5E20;
-    font-weight: 700;
+    background-color: #E8D0FF;
+    color: #4A148C;
+    font-weight: 900;
 }
 
 /* ---- Ilerleme Paneli ---- */
 #progressPanel {
-    background-color: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(206, 147, 216, 0.18);
+    border: 2px solid rgba(206, 147, 216, 0.35);
     border-radius: 12px;
 }
 
 #progressPanelTitle {
-    color: #FFFFFF;
+    color: #E8D0FF;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 #progressStatLine {
-    color: #E8F5E9;
+    color: #E8D0FF;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 800;
 }
 
 #achievementsButton {
@@ -162,7 +166,7 @@
     border-radius: 12px;
     padding: 12px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #achievementsButton:hover {
@@ -173,83 +177,84 @@
    SAYFA BASLIKLARI
    ============================================================ */
 #pageTitle {
-    color: #FFFFFF;
+    color: #4A148C;
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #pageSubtitle {
-    color: #C8E6C9;
+    color: #4A148C;
     font-size: 16px;
-    font-weight: 400;
-}
-
-#sectionHeading {
-    color: #FFFFFF;
-    font-size: 18px;
     font-weight: 700;
 }
 
+#sectionHeading {
+    color: #4A148C;
+    font-size: 18px;
+    font-weight: 800;
+}
+
 #captionText {
-    color: #A5D6A7;
+    color: #4A148C;
     font-size: 13px;
+    font-weight: 700;
 }
 
 /* ============================================================
    BUTONLAR
    ============================================================ */
 #primaryButton {
-    background-color: #FFFFFF;
-    color: #1B5E20;
+    background-color: #7B1FA2;
+    color: #F0D0FF;
     border: none;
     border-radius: 10px;
     padding: 12px 24px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #primaryButton:hover {
-    background-color: #E8F5E9;
+    background-color: #6A1B9A;
 }
 
 #primaryButton:pressed {
-    background-color: #C8E6C9;
+    background-color: #4A148C;
 }
 
 #secondaryButton {
     background-color: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    color: #7B1FA2;
+    border: 2px solid #CE93D8;
     border-radius: 10px;
     padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+#secondaryButton:hover {
+    background-color: #F3E5F5;
+}
+
+#navButton {
+    background-color: rgba(206, 147, 216, 0.25);
+    color: #F0D0FF;
+    border: 2px solid #CE93D8;
+    border-radius: 10px;
+    padding: 12px 20px;
     font-size: 15px;
     font-weight: 700;
 }
 
-#secondaryButton:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-#navButton {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #FFFFFF;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 20px;
-    font-size: 15px;
-    font-weight: 600;
-}
-
 #navButton:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(206, 147, 216, 0.45);
 }
 
 #linkButton {
     background-color: transparent;
-    color: #FFFFFF;
+    color: #7B1FA2;
     border: none;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
     padding: 4px 0px;
 }
 
@@ -258,19 +263,20 @@
 }
 
 #toggleButton {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #FFFFFF;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(206, 147, 216, 0.25);
+    color: #F0D0FF;
+    border: 2px solid #CE93D8;
     border-radius: 8px;
     padding: 10px 14px;
     font-size: 14px;
+    font-weight: 700;
 }
 
 #toggleButton:checked {
     background-color: #FFF8E1;
     color: #F57F17;
     border: 2px solid #FFD54F;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #favoriteButton {
@@ -280,7 +286,7 @@
     border-radius: 10px;
     padding: 10px 18px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #favoriteButton:hover {
@@ -292,21 +298,21 @@
    ============================================================ */
 #statCard {
     background-color: #FFFFFF;
-    border: 2px solid #A5D6A7;
+    border: 2px solid #BA68C8;
     border-radius: 14px;
     padding: 14px;
 }
 
 #statCardTitle {
-    color: #2E7D32;
+    color: #7B1FA2;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #statCardValue {
-    color: #1B5E20;
+    color: #4A148C;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* ============================================================
@@ -322,13 +328,13 @@
 #streakCount {
     color: #E65100;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #streakLabel {
     color: #EF6C00;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* ============================================================
@@ -336,20 +342,20 @@
    ============================================================ */
 #previewCard {
     background-color: #FFFFFF;
-    border: 2px solid #A5D6A7;
+    border: 2px solid #BA68C8;
     border-radius: 14px;
 }
 
 #previewCardHeader {
-    color: #1B5E20;
+    color: #4A148C;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #previewCardName {
-    color: #2E7D32;
+    color: #7B1FA2;
     font-size: 19px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* ============================================================
@@ -357,78 +363,81 @@
    ============================================================ */
 #lessonCard {
     background-color: #FFFFFF;
-    border: 2px solid #A5D6A7;
+    border: 2px solid #BA68C8;
     border-radius: 16px;
 }
 
 #lessonCardHeader {
-    background-color: #1B5E20;
+    background-color: #582C8C;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     padding: 14px 18px;
 }
 
 #lessonCardHeaderLabel {
-    color: #FFFFFF;
+    color: #F0D0FF;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 1px;
 }
 
 #lessonTitle {
-    color: #1B5E20;
+    color: #4A148C;
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #lessonDescription {
-    color: #FFFFFF;
+    color: #37474F;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 #syntaxBox {
-    background-color: #E8F5E9;
-    border: 2px solid #81C784;
+    background-color: #F3E5F5;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
     padding: 14px;
 }
 
 #syntaxLabel {
-    color: #1B5E20;
+    color: #4A148C;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     font-family: "Consolas", "Courier New", monospace;
 }
 
 #whyBox {
-    background-color: #E8F5E9;
-    border: 2px solid #66BB6A;
+    background-color: #F3E5F5;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
     padding: 14px;
 }
 
 #whyBoxTitle {
-    color: #1B5E20;
+    color: #4A148C;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #whyBoxText {
-    color: #FFFFFF;
+    color: #37474F;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 #stepsList {
     background-color: transparent;
     border: none;
-    color: #FFFFFF;
+    color: #4A148C;
     font-size: 15px;
+    font-weight: 800;
 }
 
 #stepsList::item {
     padding: 6px 4px;
+    color: #4A148C;
+    font-weight: 800;
 }
 
 /* ============================================================
@@ -436,7 +445,7 @@
    ============================================================ */
 #summaryCard {
     background-color: #FFFFFF;
-    border: 2px solid #A5D6A7;
+    border: 2px solid #BA68C8;
     border-radius: 16px;
 }
 
@@ -444,31 +453,32 @@
    MINI SINAV DIYALOGU
    ============================================================ */
 #quizDialog {
-    background-color: #1B5E20;
+    background-color: #4A148C;
 }
 
 #quizProgressLabel {
-    color: #C8E6C9;
+    color: #CE93D8;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #quizQuestionLabel {
-    color: #FFFFFF;
+    color: #F0D0FF;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #quizChoice {
     font-size: 16px;
-    color: #FFFFFF;
+    color: #F0D0FF;
     padding: 12px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(206, 147, 216, 0.15);
+    border: 2px solid rgba(206, 147, 216, 0.30);
 }
 
 #quizChoice:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(206, 147, 216, 0.30);
 }
 
 /* ============================================================
@@ -482,14 +492,15 @@
 }
 
 #achievementCardLocked {
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px dashed rgba(255, 255, 255, 0.3);
+    background-color: rgba(206, 147, 216, 0.20);
+    border: 2px dashed #CE93D8;
     border-radius: 14px;
     padding: 14px;
 }
 
 #achievementCardLocked QLabel {
-    color: #A5D6A7;
+    color: #CE93D8;
+    font-weight: 600;
 }
 
 /* ============================================================
@@ -497,35 +508,38 @@
    ============================================================ */
 QLineEdit {
     background-color: #FFFFFF;
-    border: 2px solid #81C784;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
     padding: 11px 14px;
     font-size: 15px;
-    color: #1B5E20;
-    selection-background-color: #66BB6A;
+    color: #4A148C;
+    font-weight: 600;
+    selection-background-color: #CE93D8;
     selection-color: #FFFFFF;
 }
 
 QLineEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 2px solid #7B1FA2;
 }
 
 QTextEdit {
     background-color: #FFFFFF;
-    border: 2px solid #81C784;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
     padding: 10px;
     font-size: 15px;
-    color: #1B5E20;
+    color: #4A148C;
+    font-weight: 600;
 }
 
 QComboBox {
     background-color: #FFFFFF;
-    border: 2px solid #81C784;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
     padding: 10px 14px;
     font-size: 15px;
-    color: #1B5E20;
+    color: #4A148C;
+    font-weight: 600;
 }
 
 QComboBox::drop-down {
@@ -535,19 +549,20 @@ QComboBox::drop-down {
 
 QComboBox QAbstractItemView {
     background-color: #FFFFFF;
-    border: 2px solid #81C784;
-    selection-background-color: #E8F5E9;
-    selection-color: #1B5E20;
+    border: 2px solid #BA68C8;
+    selection-background-color: #F3E5F5;
+    selection-color: #4A148C;
     font-size: 15px;
 }
 
 QSpinBox {
     background-color: #FFFFFF;
-    border: 2px solid #81C784;
+    border: 2px solid #BA68C8;
     border-radius: 8px;
     padding: 8px 12px;
     font-size: 15px;
-    color: #1B5E20;
+    color: #4A148C;
+    font-weight: 600;
 }
 
 /* ============================================================
@@ -557,25 +572,25 @@ QListWidget {
     background-color: transparent;
     border: none;
     font-size: 15px;
-    color: #FFFFFF;
 }
 
 QListWidget::item {
     padding: 12px 12px;
     border-radius: 10px;
-    color: #FFFFFF;
+    color: #4A148C;
+    font-weight: 700;
     background-color: transparent;
 }
 
 QListWidget::item:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #FFFFFF;
+    background-color: rgba(206, 147, 216, 0.22);
+    color: #4A148C;
 }
 
 QListWidget::item:selected {
-    background-color: #FFFFFF;
-    color: #1B5E20;
-    font-weight: 700;
+    background-color: #E8D0FF;
+    color: #4A148C;
+    font-weight: 900;
 }
 
 /* ============================================================
@@ -583,20 +598,21 @@ QListWidget::item:selected {
    ============================================================ */
 QTableWidget {
     background-color: #FFFFFF;
-    border: 2px solid #A5D6A7;
+    border: 2px solid #BA68C8;
     border-radius: 10px;
-    gridline-color: #C8E6C9;
+    gridline-color: #CE93D8;
     font-size: 15px;
-    color: #1B5E20;
+    color: #4A148C;
+    font-weight: 600;
 }
 
 QHeaderView::section {
-    background-color: #1B5E20;
-    color: #FFFFFF;
+    background-color: #582C8C;
+    color: #F0D0FF;
     padding: 10px;
     border: none;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* ============================================================
@@ -614,13 +630,13 @@ QScrollBar:vertical {
 }
 
 QScrollBar::handle:vertical {
-    background-color: #81C784;
+    background-color: #CE93D8;
     border-radius: 6px;
     min-height: 28px;
 }
 
 QScrollBar::handle:vertical:hover {
-    background-color: #4CAF50;
+    background-color: #AB47BC;
 }
 
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
@@ -633,7 +649,7 @@ QScrollBar:horizontal {
 }
 
 QScrollBar::handle:horizontal {
-    background-color: #81C784;
+    background-color: #CE93D8;
     border-radius: 6px;
     min-width: 28px;
 }
@@ -642,26 +658,130 @@ QScrollBar::handle:horizontal {
    DIKME ELEMANLARI
    ============================================================ */
 QLabel {
-    color: #FFFFFF;
+    color: #4A148C;
     font-size: 15px;
+    font-weight: 700;
+}
+
+/* Kart icindeki etiketler koyu mor */
+#statCard QLabel, #lessonCard QLabel, #previewCard QLabel,
+#summaryCard QLabel, #achievementCard QLabel, #whyBox QLabel,
+#syntaxBox QLabel {
+    color: #4A148C;
+    font-weight: 600;
 }
 
 QSplitter::handle {
-    background-color: #4CAF50;
+    background-color: #CE93D8;
     width: 3px;
 }
 
 QRadioButton {
-    color: #FFFFFF;
+    color: #CE93D8;
     font-size: 15px;
+    font-weight: 600;
     spacing: 8px;
 }
 
+/* ============================================================
+   DIYALOGLAR (QDialog, QMessageBox)
+   ============================================================ */
+QDialog {
+    background-color: #582C8C;
+}
+
+QDialog QLabel {
+    color: #F0D0FF;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QDialog QLineEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #BA68C8;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #4A148C;
+    font-weight: 600;
+}
+
+QDialog QComboBox {
+    background-color: #FFFFFF;
+    border: 2px solid #BA68C8;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #4A148C;
+    font-weight: 600;
+}
+
+QDialog QTextEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #BA68C8;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    color: #4A148C;
+    font-weight: 600;
+}
+
+QDialog QPushButton {
+    background-color: #FFFFFF;
+    color: #4A148C;
+    border: 2px solid #CE93D8;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+QDialog QPushButton:hover {
+    background-color: #F3E5F5;
+    border-color: #7B1FA2;
+}
+
 QMessageBox {
-    background-color: #1B5E20;
+    background-color: #582C8C;
 }
 
 QMessageBox QLabel {
-    color: #FFFFFF;
+    color: #F0D0FF;
     font-size: 15px;
+    font-weight: 600;
+}
+
+QMessageBox QPushButton {
+    background-color: #FFFFFF;
+    color: #4A148C;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    min-width: 80px;
+}
+
+QMessageBox QPushButton:hover {
+    background-color: #F3E5F5;
+}
+
+QDialogButtonBox QPushButton {
+    background-color: #FFFFFF;
+    color: #4A148C;
+    border: 2px solid #CE93D8;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+QDialogButtonBox QPushButton:hover {
+    background-color: #F3E5F5;
+}
+
+QFormLayout QLabel {
+    color: #F0D0FF;
+    font-size: 14px;
+    font-weight: 700;
 }

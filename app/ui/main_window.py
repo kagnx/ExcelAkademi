@@ -175,7 +175,22 @@ class MainWindow(QWidget):
     def _load_stylesheet(self) -> None:
         qss_path = settings.paths.stylesheet_path
         if qss_path.exists():
-            self.setStyleSheet(qss_path.read_text(encoding="utf-8"))
+            base_qss = qss_path.read_text(encoding="utf-8")
+            sidebar_override = (
+                "/* --- Sidebar override (guarantee readability) --- */\n"
+                "#sidebar QLabel { color: #E8D0FF; font-weight: 700; }\n"
+                "#sidebar #brandTitle { color: #E8D0FF; font-weight: 800; }\n"
+                "#sidebar #brandSubtitle { color: #E8D0FF; font-weight: 700; }\n"
+                "#sidebar #brandVersion { color: #E8D0FF; font-weight: 700; }\n"
+                "#sidebar #progressPanelTitle { color: #E8D0FF; font-weight: 900; }\n"
+                "#sidebar #progressStatLine { color: #E8D0FF; font-weight: 800; }\n"
+                "#sidebar QListWidget::item { color: #E8D0FF; font-weight: 800; }\n"
+                "#sidebar QListWidget::item:selected { color: #4A148C; font-weight: 900; }\n"
+                "/* --- Steps list override --- */\n"
+                "#stepsList { color: #4A148C; font-weight: 700; }\n"
+                "#stepsList::item { color: #4A148C; font-weight: 700; }\n"
+            )
+            self.setStyleSheet(base_qss + sidebar_override)
         else:
             app_logger.warning(f"Stil dosyası bulunamadı: {qss_path}")
 

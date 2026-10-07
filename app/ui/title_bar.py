@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QMouseEvent, QPixmap
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 
 from app.config import settings
@@ -76,8 +77,15 @@ class TitleBar(QWidget):
         button = QPushButton(text)
         button.setObjectName("titleBarButton")
         button.setToolTip(tooltip)
-        button.setFixedSize(34, 30)
+        button.setFixedSize(42, 34)
         button.setCursor(Qt.CursorShape.PointingHandCursor)
+        btn_font = QFont("Segoe UI", 14)
+        btn_font.setBold(True)
+        button.setFont(btn_font)
+        button.setStyleSheet(
+            "QPushButton { background-color: #BA68C8; color: #FFFFFF; border: 2px solid #CE93D8; border-radius: 6px; font-size: 17px; font-weight: 900; }"
+            "QPushButton:hover { background-color: #CE93D8; }"
+        )
         return button
 
     def _toggle_maximize(self) -> None:

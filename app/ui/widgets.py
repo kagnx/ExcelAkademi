@@ -26,6 +26,7 @@ from PyQt6.QtWidgets import (
 EXCEL_GREEN = "#107C41"
 TRACK_COLOR = "#E3E8E6"
 MUTED_TEXT = "#6B7670"
+SIDEBAR_LABEL_COLOR = "#E8D0FF"
 
 DIFFICULTY_COLORS = {
     "Başlangıç": ("#E6F4EA", "#107C41"),
@@ -87,9 +88,10 @@ class CircularProgress(QWidget):
         pct_rect = QRectF(0, self._size * 0.30, self._size, self._size * 0.30)
         painter.drawText(pct_rect, int(Qt.AlignmentFlag.AlignCenter), f"%{self._value}")
 
-        painter.setPen(QColor(MUTED_TEXT))
+        painter.setPen(QColor(SIDEBAR_LABEL_COLOR))
         label_font = QFont()
         label_font.setPointSize(max(8, int(self._size / 14)))
+        label_font.setBold(True)
         painter.setFont(label_font)
         label_rect = QRectF(4, self._size * 0.56, self._size - 8, self._size * 0.24)
         painter.drawText(label_rect, int(Qt.AlignmentFlag.AlignCenter) | int(Qt.TextFlag.TextWordWrap), self._label_text)

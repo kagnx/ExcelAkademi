@@ -493,7 +493,7 @@ FORMULAS = [
      "syntax_tr": "=BUL(aranan_metin; metin_içinde; [başlangıç_sayısı])", "syntax_en": "=FIND(find_text, within_text, [start_num])",
      "short_description_tr": "Bir metnin başka bir metin içindeki konumunu bulur, büyük küçük harf duyarlıdır.",
      "detailed_explanation_tr": "BUL, aranan_metin'in metin_içinde kaçıncı karakterden başladığını döndürür. Büyük küçük harfe duyarlıdır ve joker karakter kabul etmez.",
-     "example_formula": "=BUL(\"l\";A1)", "example_description_tr": "A1 metninde l harfinin ilk geçtiği konumu bulur.", "example_result": "verilere bağlı",
+     "example_formula": "=BUL(\"l\";\"Excel Usta\")", "example_description_tr": "\"Excel Usta\" metninde l harfinin ilk geçtiği konumu bulur.", "example_result": "verilere bağlı",
      "steps": ["Aranacak metni ilk argüman yapın.", "İçinde arama yapılacak metni ikinci argüman yapın.", "İsteğe bağlı başlangıç konumunu ekleyin.", "Enter'a basın."],
      "tags": ["arama", "metin"],
      "exercise_question_tr": "A1 hücresinde @ işaretinin konumunu bulan formülü yazın.", "exercise_answer": "=BUL(\"@\";A1)",
@@ -503,7 +503,7 @@ FORMULAS = [
      "syntax_tr": "=MBUL(aranan_metin; metin_içinde; [başlangıç_sayısı])", "syntax_en": "=SEARCH(find_text, within_text, [start_num])",
      "short_description_tr": "Bir metnin başka bir metin içindeki konumunu bulur, büyük küçük harf duyarlı değildir.",
      "detailed_explanation_tr": "MBUL, BUL ile aynı işi yapar ancak büyük küçük harf duyarlı değildir ve joker karakterleri destekler. Harf büyüklüğü önemli değilse MBUL tercih edilir.",
-     "example_formula": "=MBUL(\"k\";A1)", "example_description_tr": "A1 metninde k harfinin, büyük küçük fark etmeksizin, ilk geçtiği konumu bulur.", "example_result": "verilere bağlı",
+     "example_formula": "=MBUL(\"k\";\"Excel Usta Akademisi\")", "example_description_tr": "\"Excel Usta Akademisi\" metninde k harfinin, büyük küçük fark etmeksizin, ilk geçtiği konumu bulur.", "example_result": "verilere bağlı",
      "steps": ["Aranacak metni ilk argüman yapın.", "İçinde arama yapılacak metni ikinci argüman yapın.", "Enter'a basın."],
      "tags": ["arama", "metin"],
      "exercise_question_tr": "A1 hücresinde excel kelimesinin, büyük küçük harf fark etmeksizin, konumunu bulan formülü yazın.", "exercise_answer": "=MBUL(\"excel\";A1)",
@@ -546,7 +546,7 @@ FORMULAS = [
      "syntax_tr": "=EĞER(mantıksal_sınama; [doğru_ise_değer]; [yanlış_ise_değer])", "syntax_en": "=IF(logical_test, [value_if_true], [value_if_false])",
      "short_description_tr": "Bir koşulu test eder, doğruysa bir değer, yanlışsa başka bir değer döndürür.",
      "detailed_explanation_tr": "EĞER, Excel'in en temel karar verme fonksiyonudur. Belirtilen mantıksal sınamayı değerlendirir; sonucuna göre iki farklı değerden birini döndürür. İç içe kullanılarak birden fazla koşul da değerlendirilebilir.",
-     "example_formula": "=EĞER(A1>=50;\"Geçti\";\"Kaldı\")", "example_description_tr": "A1'deki not 50 veya üzerindeyse Geçti, değilse Kaldı yazdırır.", "example_result": "Geçti",
+     "example_formula": "=EĞER(A1>=50;\"Geçti\";\"Kaldı\")", "example_description_tr": "A1'deki not 50 veya üzerindeyse Geçti, değilse Kaldı yazdırır.", "example_result": "Geçti/Kaldı",
      "steps": ["Test edilecek koşulu ilk argüman yapın.", "Koşul doğruysa dönecek değeri ikinci argüman yapın.", "Koşul yanlışsa dönecek değeri üçüncü argüman yapın.", "Enter'a basın."],
      "tags": ["koşul", "mantıksal", "temel"],
      "exercise_question_tr": "A1'deki puan 60'tan büyük veya eşitse Başarılı, değilse Başarısız yazan formülü yazın.", "exercise_answer": "=EĞER(A1>=60;\"Başarılı\";\"Başarısız\")",
@@ -596,7 +596,7 @@ FORMULAS = [
      "syntax_tr": "=EĞERYOKSA(değer; değer_eğer_yok)", "syntax_en": "=IFNA(value, value_if_na)",
      "short_description_tr": "Bir formül bulunamadı hatası verirse, alternatif bir değer gösterir.",
      "detailed_explanation_tr": "EĞERYOKSA, EĞERHATA'ya benzer ancak yalnızca bulunamadı hatasını yakalar; diğer hata türlerini etkilemez, bu yüzden farklı hata türlerini ayırt etmek istediğinizde daha isabetlidir.",
-     "example_formula": "=EĞERYOKSA(KAÇINCI(A1;B:B;0);\"Listede yok\")", "example_description_tr": "KAÇINCI bulunamadı hatası verirse Listede yok yazdırır.", "example_result": "Listede yok",
+     "example_formula": "=EĞERYOKSA(KAÇINCI(999;B1:B10;0);\"Listede yok\")", "example_description_tr": "KAÇINCI bulunamadı hatası verirse Listede yok yazdırır.", "example_result": "Listede yok",
      "steps": ["Bulunamadı kontrolü yapılacak formülü ilk argüman yapın.", "Bulunamama durumunda gösterilecek değeri ikinci argüman yapın.", "Enter'a basın."],
      "tags": ["hata yönetimi", "mantıksal"],
      "exercise_question_tr": "A1'in B1:B10 listesinde bulunamaması durumunda Kayıt yok gösteren formülü KAÇINCI ile yazın.", "exercise_answer": "=EĞERYOKSA(KAÇINCI(A1;B1:B10;0);\"Kayıt yok\")",
@@ -709,7 +709,7 @@ FORMULAS = [
      "syntax_tr": "=DOLAYLI(metin_başvurusu; [a1])", "syntax_en": "=INDIRECT(ref_text, [a1])",
      "short_description_tr": "Metin olarak yazılmış bir hücre başvurusunu gerçek bir başvuruya çevirir.",
      "detailed_explanation_tr": "DOLAYLI, A1 gibi metin olarak yazılmış bir adresi gerçek bir hücre başvurusuna dönüştürür. Kullanıcı girdisine göre dinamik olarak farklı sayfalara veya aralıklara başvurmak için kullanılır.",
-     "example_formula": "=DOLAYLI(B1&\"!A1\")", "example_description_tr": "B1'deki sayfa adını kullanarak o sayfadaki A1 hücresine başvurur.", "example_result": "verilere bağlı",
+     "example_formula": "=DOLAYLI(\"A\"&SATIRSAY(A1:A5))", "example_description_tr": "\"A\" harfi ile satır sayısını birleştirip \"A5\" gibi dinamik bir adres oluşturur ve o hücrenin değerini döndürür.", "example_result": "8",
      "steps": ["Hücre adresini temsil eden metni oluşturun.", "DOLAYLI( içine bu metni yazın.", "Enter'a basın."],
      "tags": ["dinamik başvuru", "arama", "ileri"],
      "exercise_question_tr": "B1'deki sayısal değeri A harfiyle birleştirip o hücreye başvuran formülü yazın.", "exercise_answer": "=DOLAYLI(\"A\"&B1)",
@@ -1058,7 +1058,7 @@ FORMULAS = [
      "syntax_tr": "=İÇ_VERİM_ORANI(değerler; [tahmin])", "syntax_en": "=IRR(values, [guess])",
      "short_description_tr": "Bir dizi nakit akışının iç verim oranını hesaplar.",
      "detailed_explanation_tr": "İÇ_VERİM_ORANI, net bugünkü değeri sıfır yapan iskonto oranını bulur; bir yatırımın kendi içindeki getiri yüzdesini gösterir ve farklı yatırımları karşılaştırmak için kullanılır.",
-     "example_formula": "=İÇ_VERİM_ORANI(A1:A5)", "example_description_tr": "A1:A5'teki nakit akışlarının, ilk değer genellikle negatif yatırım, iç verim oranını hesaplar.", "example_result": "verilere bağlı",
+     "example_formula": "=İÇ_VERİM_ORANI({-10000;3000;4000;5000;6000})", "example_description_tr": "İlk değeri negatif yatırım olan nakit akışları (yatırım ve dönemsel getiriler) üzerinden iç verim oranını hesaplar.", "example_result": "verilere bağlı",
      "steps": ["İlk nakit akışının yer aldığı aralığı belirtin, genellikle negatif ilk yatırım.", "İÇ_VERİM_ORANI( yazıp aralığı seçin.", "Enter'a basın."],
      "tags": ["finansal", "yatırım analizi", "ileri"],
      "exercise_question_tr": "A1:A6 aralığındaki nakit akışlarının iç verim oranını hesaplayan formülü yazın.", "exercise_answer": "=İÇ_VERİM_ORANI(A1:A6)",
@@ -1216,7 +1216,7 @@ FORMULAS = [
      "syntax_tr": "=TOPKARE(sayı1; [sayı2]; ...)", "syntax_en": "=SUMSQ(number1, [number2], ...)",
      "short_description_tr": "Verilen sayıların karelerinin toplamını hesaplar.",
      "detailed_explanation_tr": "TOPKARE, her sayının kareğini alır ve bu karelerin toplamını döndürür. İstatistiksel varyans hesaplamalarında ve Pisagor teoreminde kullanılır.",
-     "example_formula": "=TOPKARE(A1:A3)", "example_description_tr": "A1:A3 aralığındaki sayıların karelerinin toplamını bulur.", "example_result": "1938",
+     "example_formula": "=TOPKARE(A1:A3)", "example_description_tr": "A1:A3 aralığındaki sayıların karelerinin toplamını bulur.", "example_result": "1898",
      "steps": ["Sayıları veya aralığı belirtin.", "=TOPKARE( yazıp aralığı seçin.", "Enter'a basın."],
      "tags": ["kare", "toplama", "matematik"],
      "exercise_question_tr": "3 ve 4 sayılarının karelerinin toplamını bulan formülü yazın.", "exercise_answer": "=TOPKARE(3;4)",
@@ -1307,7 +1307,7 @@ FORMULAS = [
      "syntax_tr": "=TEMİZLE(metin)", "syntax_en": "=CLEAN(text)",
      "short_description_tr": "Bir metindeki yazdırılamayan (baskı dışı) karakterleri temizler.",
      "detailed_explanation_tr": "TEMİZLE, dış kaynaklardan aktarılan verilerdeki ASCII 0-31 arası görünmeyen karakterleri kaldırır.",
-     "example_formula": "=TEMİZLE(A1)", "example_description_tr": "A1'deki metindeki baskı dışı karakterleri temizler.", "example_result": "temiz metin",
+     "example_formula": "=TEMİZLE(KARAKTER(10)&\"Metin\")", "example_description_tr": "Metne eklenen satır sonu karakteri (kod 10) baskı dışı olarak temizlenir.", "example_result": "Metin",
      "steps": ["Temizlenecek metni belirtin.", "=TEMİZLE( yazıp hücreyi seçin.", "Enter'a basın."],
      "tags": ["temizleme", "metin"],
      "exercise_question_tr": "A1 hücresindeki metni baskı dışı karakterlerden temizleyen formülü yazın.", "exercise_answer": "=TEMİZLE(A1)",
@@ -1329,7 +1329,7 @@ FORMULAS = [
      "syntax_en": "=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])",
      "short_description_tr": "DÜŞEYARA'nın gelişmiş hali; her iki yönde, düz ve ters sıralı arama yapar.",
      "detailed_explanation_tr": "XLOOKUP, DÜŞEYARA ve İNDİS/KAÇINCI kombinasyonunun yerini alır. Eksik değer varsayımı, arama modu ve çoklu sonuç desteği sunar.",
-     "example_formula": '=XLOOKUP("Ali";A2:A10;B2:B10)', "example_description_tr": "A sütununda Ali'yi bulup karşılığındaki B değerini döndürür.", "example_result": "verilere bağlı",
+     "example_formula": "=XLOOKUP(23;A1:A5;B1:B5)", "example_description_tr": "A sütununda 23 değerini bulup aynı satırdaki B değerini döndürür.", "example_result": "83",
      "steps": ["Aranacak değeri belirtin.", "Aranacağı aralığı (lookup) girin.", "Sonucun alınacağı aralığı (return) girin.", "İsteğe bağlı: bulunamazsa ne gösterileceğini yazın.", "Enter'a basın."],
      "tags": ["arama", "DÜŞEYARA", "arama", "ileri"],
      "exercise_question_tr": "A2:A10 aralığında 100 değerini bulup C2:C10'daki karşılığını döndüren XLOOKUP formülünü yazın.", "exercise_answer": "=XLOOKUP(100;A2:A10;C2:C10)",
@@ -1340,7 +1340,7 @@ FORMULAS = [
      "syntax_en": "=XMATCH(lookup_value, lookup_array, [match_mode], [search_mode])",
      "short_description_tr": "Bir değerin dizideki konumunu (sıra numarasını) bulur; KAÇINCI'nin gelişmiş halidir.",
      "detailed_explanation_tr": "XMATCH, KAÇINCI'nin yerini alır; tam eşleşme, bir sonraki büyük/küçük değer ve tersten arama modları destekler.",
-     "example_formula": '=XMATCH("Mehmet";A2:A20)', "example_description_tr": "A2:A20 aralığında Mehmet'in kaçıncı sırada olduğunu bulur.", "example_result": "verilere bağlı",
+     "example_formula": "=XMATCH(35;A1:A5)", "example_description_tr": "A1:A5 aralığında 35 değerinin kaçıncı sırada olduğunu bulur.", "example_result": "3",
      "steps": ["Aranacak değeri belirtin.", "Aranacağı aralığı girin.", "İsteğe bağlı: eşleme modunu belirtin.", "Enter'a basın."],
      "tags": ["konum", "arama", "arama"],
      "exercise_question_tr": "B2:B15 aralığında 50 sayısının kaçıncı sırada olduğunu bulan XMATCH formülünü yazın.", "exercise_answer": "=XMATCH(50;B2:B15)",
@@ -1378,25 +1378,17 @@ FORMULAS = [
      "exercise_hint_tr": "Sonuç 1,0 civarında olmalıdır.", "difficulty": ILERI},
 
     # ---- Finansal (ek 2) ----
-    {"category_slug": "finansal", "name_tr": "FAİZTUTARI", "name_en": "IPMT",
-     "syntax_tr": "=FAİZTUTARI(dönem; dönem_sayısı; şimdiki_değer; gelecek_değer; [tür])",
-     "syntax_en": "=IPMT(rate, per, nper, pv, [fv], [type])",
+    {"category_slug": "finansal", "name_tr": "FAİZTUTARI", "name_en": "IPMT",     "syntax_tr": "=FAİZTUTARI(faiz_oranı; dönem; dönem_sayısı; şimdiki_değer; [gelecek_değer]; [tür])", "syntax_en": "=IPMT(rate, per, nper, pv, [fv], [type])",
      "short_description_tr": "Belirli bir dönemdeki faiz ödemesi tutarını hesaplar.",
-     "detailed_explanation_tr": "FAİZTUTARI, kredi amortisman tablosunda her dönem ödenen faiz tutarını verir. ANAPARATUTARI ile birlikte kullanılır.",
-     "example_formula": "=FAİZTUTARI(FAİZ_ORANI(12;120;100000)/12;1;120;100000)",
-     "example_description_tr": "120 aylık kredinin ilk ayındaki faiz ödemesini hesaplar.", "example_result": "verilere bağlı",
+     "detailed_explanation_tr": "FAİZTUTARI, kredi amortisman tablosunda her dönem ödenen faiz tutarını verir. ANAPARATUTARI ile birlikte kullanılır.","example_formula": "=FAİZTUTARI(0,02;1;12;100000)", "example_description_tr": "12 aylık, %2 aylık faizli 100.000 TL kredinin ilk ayındaki faiz ödemesini hesaplar.", "example_result": "-2000",
      "steps": ["Dönemsel faiz oranını girin.", "Hangi dönem olduğunu belirtin.", "Toplam dönem sayısını girin.", "Kredi tutarını girin.", "Enter'a basın."],
      "tags": ["faiz", "kredi", "finansal", "ileri"],
      "exercise_question_tr": "100.000 TL'lik, %2 aylık faizli kredinin 1. ayındaki faiz tutarını bulan formülü yazın.", "exercise_answer": "=FAİZTUTARI(0,02;1;12;100000)",
      "exercise_hint_tr": "Dönemsel faiz oranı ile dönem numarasını doğru girin.", "difficulty": ILERI},
 
-    {"category_slug": "finansal", "name_tr": "ANAPARATUTARI", "name_en": "PPMT",
-     "syntax_tr": "=ANAPARATUTARI(dönem; dönem_sayısı; şimdiki_değer; gelecek_değer; [tür])",
-     "syntax_en": "=PPMT(rate, per, nper, pv, [fv], [type])",
+    {"category_slug": "finansal", "name_tr": "ANAPARATUTARI", "name_en": "PPMT",     "syntax_tr": "=ANAPARATUTARI(faiz_oranı; dönem; dönem_sayısı; şimdiki_değer; [gelecek_değer]; [tür])", "syntax_en": "=PPMT(rate, per, nper, pv, [fv], [type])",
      "short_description_tr": "Belirli bir dönemdeki anapara ödemesi tutarını hesaplar.",
-     "detailed_explanation_tr": "ANAPARATUTARI, kredi amortismanında her dönemde ödenen anapara tutarını verir. FAİZTUTARI ile birlikte tam ödeme tablosu oluşturulabilir.",
-     "example_formula": "=ANAPARATUTARI(FAİZ_ORANI(12;120;100000)/12;1;120;100000)",
-     "example_description_tr": "120 aylık kredinin ilk ayındaki anapara ödemesini hesaplar.", "example_result": "verilere bağlı",
+     "detailed_explanation_tr": "ANAPARATUTARI, kredi amortismanında her dönemde ödenen anapara tutarını verir. FAİZTUTARI ile birlikte tam ödeme tablosu oluşturulabilir.","example_formula": "=ANAPARATUTARI(0,02;1;12;100000)", "example_description_tr": "12 aylık, %2 aylık faizli 100.000 TL kredinin ilk ayındaki anapara ödemesini hesaplar.", "example_result": "-7455,96",
      "steps": ["Dönemsel faiz oranını girin.", "Hangi dönem olduğunu belirtin.", "Toplam dönem sayısını ve kredi tutarını girin.", "Enter'a basın."],
      "tags": ["anapara", "kredi", "finansal", "ileri"],
      "exercise_question_tr": "100.000 TL'lik, 12 aylık, %2 aylık faizli kredinin 1. ayındaki anapara ödemesini bulan formülü yazın.", "exercise_answer": "=ANAPARATUTARI(0,02;1;12;100000)",
@@ -1406,26 +1398,46 @@ FORMULAS = [
 
 
 def seed_formulas_if_empty(session: Session) -> None:
-    """Veritabanı boşsa (hiç kategori yoksa) kategorileri ve formülleri ekler.
-    Zaten veri varsa hiçbir şey yapmaz (uygulama her açılışta güvenle çağırabilir)."""
-    if session.query(Category).count() > 0:
-        app_logger.debug("Formül veritabanı zaten dolu, tohumlama atlandı.")
-        return
+    """Kategorileri ve formülleri tohumlar.
 
-    slug_to_category: dict[str, Category] = {}
+    - Boş veritabanına tüm kategorileri ve formülleri ekler.
+    - Veritabanında zaten veri varsa YALNIZCA eksik kayıtları ekler
+      (kategori slug'ı ve formül Türkçe adına göre eşleşir); mevcut
+      kayıtlar asla değiştirilmez. Böylece sonradan tohuma eklenen
+      formüller bayat veritabanlarına da aktarılır (ör. 132 tohum
+      formülünün yalnızca 114'ünün bulunduğu eski bir DB).
+
+    Idempotenttir; uygulama her açılışta güvenle çağırabilir.
+    """
+    slug_to_category: dict[str, Category] = {
+        category.slug: category for category in session.query(Category).all()
+    }
+
+    added_categories = 0
     for cat_data in CATEGORIES:
-        category = Category(**cat_data)
-        session.add(category)
-        slug_to_category[cat_data["slug"]] = category
+        if cat_data["slug"] not in slug_to_category:
+            category = Category(**cat_data)
+            session.add(category)
+            slug_to_category[cat_data["slug"]] = category
+            added_categories += 1
     session.commit()
 
+    existing_names = {row[0] for row in session.query(Formula.name_tr).distinct().all()}
+    added_formulas = 0
     for f_data in FORMULAS:
         data = dict(f_data)
         category_slug = data.pop("category_slug")
-        category = slug_to_category[category_slug]
-        data["category_id"] = category.id
-        formula = Formula(**data)
-        session.add(formula)
+        if data["name_tr"] in existing_names:
+            continue                      # mevcut kayıt (kullanıcı verisi) korunur
+        data["category_id"] = slug_to_category[category_slug].id
+        session.add(Formula(**data))
+        existing_names.add(data["name_tr"])
+        added_formulas += 1
     session.commit()
 
-    app_logger.info(f"{len(CATEGORIES)} kategori ve {len(FORMULAS)} formül veritabanına eklendi.")
+    if added_categories or added_formulas:
+        app_logger.info(
+            f"Tohumlama: {added_categories} yeni kategori, {added_formulas} yeni formül eklendi."
+        )
+    else:
+        app_logger.debug("Formül veritabanı güncel, tohumlama gerekmedi.")

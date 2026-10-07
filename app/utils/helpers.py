@@ -22,6 +22,7 @@ Neden gerekli?
 from __future__ import annotations
 
 import platform
+import re
 from pathlib import Path
 from typing import Optional
 
@@ -139,3 +140,27 @@ def truncate(text: str, max_length: int = 60) -> str:
     if len(text) <= max_length:
         return text
     return text[: max_length - 1].rstrip() + "…"
+
+
+# Windows'ta dosya adında geçmesi yasak karakterler + kontrol karakterleri.
+_FORBIDDEN_FILENAME_CHARS = set('<>:"/\\|?*')
+
+
+def safe_filename(name: str, max_length: int = 80) -> str:
+    """Bir dizeyi dosya adı olarak güvenli hâle getirir: yasak/kontrol
+    karakterlerini temizler, boşlukları alt çizgiye çevirir, baştaki/sondaki
+    nokta ve alt çizgileri kırpıp uzunluğu sınırlar.
+
+    Türkçe karakterler (ç, ğ, İ, ö, ş, ü) korunur — bunlar dosya adında
+    geçerlidir. Boş ya da tamamen temizlenen bir girdi için "dosya" döner.
+    """
+    if not name:
+        return "dosya"
+    cleaned = "".join(
+        "_" if (ch in _FORBIDDEN_FILENAME_CHARS or ord(ch) < 32) else ch
+        for ch in str(name)
+    )
+    cleaned = re.sub(r"\s+", "_", cleaned.strip())
+    cleaned = re.sub(r"_+", "_", cleaned)
+    cleaned = cleaned.strip("._")
+    return (cleaned or "dosya")[:max_length]

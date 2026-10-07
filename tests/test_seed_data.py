@@ -156,19 +156,56 @@ class TestSeedFormulas:
         assert session.query(Category).count() == 8
         assert session.query(Formula).count() == 132
 
-    def test_seed_skips_when_data_exists(self, session):
+    def test_seed_fills_missing_and_preserves_existing(self, session):
+        """Kategoriler zaten varsa seed artık ATLANMAZ: eksik formülleri
+        tamamlar, mevcut kayıtlara dokunmaz (bayat DB sorununun çözümü).
+        Eski davranış ("kategori varsa hiç dokunma") 18 formüllük veri
+        kaybına yol açıyordu."""
         from app.models.category import Category
+        from app.models.formula import Formula
 
-        # Manually add one category
+        # Özel (tohumda olmayan) bir kategori zaten mevcut
         cat = Category(slug="test", name_tr="Test", sort_order=99)
         session.add(cat)
         session.commit()
 
         seed_formulas_if_empty(session)
+
+        # Tohumun 8 kategorisi + özel kategori; tüm tohum formülleri eklenmeli
+        assert session.query(Category).count() == 9
+        assert session.query(Formula).count() == 132
+        # Özel kategori korunmuş olmalı
+        assert session.query(Category).filter_by(slug="test").one().name_tr == "Test"
+
+    def test_seed_updates_only_missing_rows(self, session):
+        """Eksik formüller tamamlanır; mevcut satırlar değiştirilmez."""
+        from app.models.category import Category
         from app.models.formula import Formula
 
-        # Should not add any formulas since categories already exist
-        assert session.query(Formula).count() == 0
+        seed_formulas_if_empty(session)
+
+        # 3 formülü sil (TOPLA hariç - o değişiklik korunacak),
+        # birini kullanıcı verisi gibi değiştir
+        victims = (
+            session.query(Formula)
+            .filter(Formula.name_tr != "TOPLA")
+            .limit(3)
+            .all()
+        )
+        for v in victims:
+            session.delete(v)
+        survivor = session.query(Formula).filter_by(name_tr="TOPLA").one()
+        survivor.short_description_tr = "KULLANICI DEGISIKLIGI"
+        session.commit()
+        assert session.query(Formula).count() == 129
+
+        seed_formulas_if_empty(session)
+
+        # Silinen 3 geri geldi, değiştirilen korundu
+        assert session.query(Formula).count() == 132
+        survivor = session.query(Formula).filter_by(name_tr="TOPLA").one()
+        assert survivor.short_description_tr == "KULLANICI DEGISIKLIGI"
+        assert session.query(Category).count() == 8
 
 
 class TestSeedTips:

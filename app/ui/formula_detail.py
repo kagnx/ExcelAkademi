@@ -11,11 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtGui import QColor, QFont
 from PyQt6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QLabel,
     QListWidget,
+    QListWidgetItem,
+    QMessageBox,
     QPushButton,
     QScrollArea,
     QSizePolicy,
@@ -123,12 +126,20 @@ class FormulaDetailCard(QFrame):
 
         steps_heading = QLabel("Adım Adım")
         steps_heading.setObjectName("sectionHeading")
+        steps_heading.setStyleSheet("color: #4A148C; font-size: 18px; font-weight: 800;")
         layout.addWidget(steps_heading)
         self.steps_list = QListWidget()
         self.steps_list.setObjectName("stepsList")
         self.steps_list.setFrameShape(QFrame.Shape.NoFrame)
         self.steps_list.setMaximumHeight(140)
         self.steps_list.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+        self.steps_list.setStyleSheet(
+            "QListWidget { background: transparent; border: none; color: #4A148C; font-size: 15px; font-weight: 800; }"
+            "QListWidget::item { padding: 6px 4px; color: #4A148C; font-weight: 800; }"
+        )
+        self._step_font = QFont("Segoe UI", 15)
+        self._step_font.setBold(True)
+        self._step_color = QColor("#4A148C")
         layout.addWidget(self.steps_list)
 
         action_row = QHBoxLayout()
@@ -172,7 +183,10 @@ class FormulaDetailCard(QFrame):
 
         self.steps_list.clear()
         for i, step in enumerate(formula.steps or [], start=1):
-            self.steps_list.addItem(f"{i}.  {step}")
+            item = QListWidgetItem(f"{i}.  {step}")
+            item.setFont(self._step_font)
+            item.setForeground(self._step_color)
+            self.steps_list.addItem(item)
 
         self._update_favorite_button()
 
@@ -211,6 +225,9 @@ class FormulaExportMixin:
 
     def _on_excel_requested(self, formula_id: int) -> None:  # noqa: D102
         formula = self.formula_service.get_formula(formula_id)
+        if formula is None:
+            QMessageBox.warning(self, "Bulunamadı", "Seçilen formül bulunamadı.")
+            return
         try:
             path = self.excel_service.build_example_workbook(formula)
             QMessageBox.information(self, "Oluşturuldu", f"Örnek Excel dosyası oluşturuldu:\n{path}")
@@ -220,6 +237,9 @@ class FormulaExportMixin:
 
     def _on_pdf_requested(self, formula_id: int) -> None:  # noqa: D102
         formula = self.formula_service.get_formula(formula_id)
+        if formula is None:
+            QMessageBox.warning(self, "Bulunamadı", "Seçilen formül bulunamadı.")
+            return
         try:
             path = self.pdf_service.generate_quick_reference_card(formula)
             QMessageBox.information(self, "Kaydedildi", f"Hızlı referans kartı oluşturuldu:\n{path}")
