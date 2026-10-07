@@ -9,18 +9,52 @@ from __future__ import annotations
 
 import os
 import sys
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 # Proje kök dizini: PyInstaller frozen modda _MEIPASS kullanılır
-if getattr(sys, "frozen", False):
-    # PyInstaller ile derlenmiş exe: veriler _MEIPASS içinde
+IS_FROZEN: bool = getattr(sys, "frozen", False)
+
+if IS_FROZEN:
+    # PyInstaller ile derlenmiş exe: salt-okunur kaynaklar (QSS, ikon,
+    # tohum verisi) _MEIPASS içinde paketlenir. _MEIPASS yalnızca açılışta
+    # oluşturulan GEÇİCİ bir dizindir; uygulama kapanınca silinir.
     BASE_DIR: Path = Path(sys._MEIPASS)
 else:
     # Normal Python çalıştırma: excel_master_academy_py/
     BASE_DIR: Path = Path(__file__).resolve().parent.parent
+
+# Kullanıcı verisi (veritabanı, loglar, dışa aktarımlar) frozen modda ASLA
+# _MEIPASS'e yazılmaz: her açılışta sıfırlandığı için kullanıcı ilerlemesi
+# (test geçmişi, favoriler, streak) kaybolurdu. Kalıcı dizin kullanılır:
+_USER_DATA_DIR_NAME = "ExcelMasterAkademisi"
+
+
+def _resolve_user_data_dir(
+    frozen: bool,
+    environ: Mapping[str, str] | None = None,
+    home: Path | None = None,
+) -> Path:
+    """Kalıcı kullanıcı verisi dizinini döndürür.
+
+    - frozen=False: proje kökü (geliştirme modunda mevcut davranış aynen korunur)
+    - frozen=True : ``%LOCALAPPDATA%\\ExcelMasterAkademisi`` (Windows);
+      ``LOCALAPPDATA`` yoksa veya boşsa ``<home>/.excel_master_akademisi``
+    """
+    if not frozen:
+        return BASE_DIR
+    env = os.environ if environ is None else environ
+    local_appdata = (env.get("LOCALAPPDATA") or "").strip()
+    if local_appdata:
+        return Path(local_appdata) / _USER_DATA_DIR_NAME
+    base = Path.home() if home is None else Path(home)
+    return base / ".excel_master_akademisi"
+
+
+USER_DATA_DIR: Path = _resolve_user_data_dir(IS_FROZEN)
 
 # .env dosyasını (varsa) yükle. Dosya yoksa sessizce devam eder,
 # bu durumda aşağıdaki varsayılan değerler kullanılır.
@@ -49,22 +83,29 @@ def _get_int(name: str, default: int) -> int:
 class Paths:
     """Uygulamanın kullandığı tüm dosya/klasör yollarını tutar."""
 
-    base_dir: Path = BASE_DIR
+    base_dir: Path = BASE_DIR                    # kaynaklar (salt okunur)
     app_dir: Path = BASE_DIR / "app"
     data_dir: Path = BASE_DIR / "app" / "data"
-    db_path: Path = BASE_DIR / "app" / "data" / "academy.db"
+    # Veritabanı: frozen modda kalıcı kullanıcı dizininde (bkz. USER_DATA_DIR)
+    db_path: Path = (
+        USER_DATA_DIR / "academy.db"
+        if IS_FROZEN
+        else BASE_DIR / "app" / "data" / "academy.db"
+    )
     resources_dir: Path = BASE_DIR / "app" / "ui" / "resources"
     stylesheet_path: Path = BASE_DIR / "app" / "ui" / "resources" / "styles.qss"
-    logs_dir: Path = BASE_DIR / "logs"
-    exports_dir: Path = BASE_DIR / "exports"
-    excel_exports_dir: Path = BASE_DIR / "exports" / "excel"
-    pdf_exports_dir: Path = BASE_DIR / "exports" / "pdf"
-    backups_dir: Path = BASE_DIR / "exports" / "backups"
+    # Loglar ve dışa aktarımlar her iki modda da kalıcı kullanıcı dizininde
+    logs_dir: Path = USER_DATA_DIR / "logs"
+    exports_dir: Path = USER_DATA_DIR / "exports"
+    excel_exports_dir: Path = USER_DATA_DIR / "exports" / "excel"
+    pdf_exports_dir: Path = USER_DATA_DIR / "exports" / "pdf"
+    backups_dir: Path = USER_DATA_DIR / "exports" / "backups"
 
     def ensure_exist(self) -> None:
         """Uygulamanın çalışması için gerekli klasörleri oluşturur."""
         for directory in (
             self.data_dir,
+            self.db_path.parent,   # frozen modda kalıcı kullanıcı dizini
             self.logs_dir,
             self.exports_dir,
             self.excel_exports_dir,
