@@ -56,6 +56,11 @@ class TestCurrentProcessPaths:
     def test_user_data_dir_is_project_root(self):
         assert USER_DATA_DIR == BASE_DIR
 
+    def test_user_data_root_exposed_for_settings_page(self):
+        # Ayarlar sayfasındaki "Veri Klasörünü Aç" butonu bu yolu açar
+        assert settings.paths.user_data_root == USER_DATA_DIR
+        assert settings.paths.user_data_root.is_dir()
+
     def test_db_path_unchanged(self):
         assert settings.paths.db_path == BASE_DIR / "app" / "data" / "academy.db"
 

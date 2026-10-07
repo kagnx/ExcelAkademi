@@ -7,7 +7,8 @@ Başarılar (rozetler + günlük seri özeti).
 """
 from __future__ import annotations
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QUrl
+from PyQt6.QtGui import QDesktopServices
 from PyQt6.QtWidgets import (
     QFrame,
     QGridLayout,
@@ -118,6 +119,7 @@ class SettingsPage(QWidget):
 
         layout.addWidget(self._build_export_section())
         layout.addWidget(self._build_database_section())
+        layout.addWidget(self._build_data_folder_section())
         layout.addWidget(self._build_info_section())
         layout.addStretch()
 
@@ -169,6 +171,31 @@ class SettingsPage(QWidget):
         layout.addWidget(note)
         return frame
 
+    def _build_data_folder_section(self) -> QFrame:
+        frame = QFrame()
+        frame.setObjectName("previewCard")
+        layout = QVBoxLayout(frame)
+        layout.setSpacing(10)
+
+        heading = QLabel("Veri Klasörü")
+        heading.setObjectName("sectionHeading")
+        layout.addWidget(heading)
+
+        open_button = QPushButton("📁  Veri Klasörünü Aç")
+        open_button.setObjectName("secondaryButton")
+        open_button.setCursor(Qt.CursorShape.PointingHandCursor)
+        open_button.clicked.connect(self._open_data_folder)
+        layout.addWidget(open_button)
+
+        note = QLabel(
+            "Veritabanı, loglar ve Excel/PDF dışa aktarımları şu klasörde saklanır:\n"
+            f"{settings.paths.user_data_root}"
+        )
+        note.setObjectName("captionText")
+        note.setWordWrap(True)
+        layout.addWidget(note)
+        return frame
+
     def _build_info_section(self) -> QFrame:
         frame = QFrame()
         frame.setObjectName("previewCard")
@@ -206,6 +233,24 @@ class SettingsPage(QWidget):
         except Exception as exc:  # noqa: BLE001
             app_logger.exception("PDF kılavuzu oluşturulurken hata")
             QMessageBox.critical(self, "Hata", f"PDF oluşturulurken bir hata oluştu:\n{exc}")
+
+    def _open_data_folder(self) -> None:
+        """Kalıcı veri klasörünü (veritabanı, loglar, dışa aktarımlar) dosya
+        yöneticisinde açar."""
+        folder = settings.paths.user_data_root
+        try:
+            folder.mkdir(parents=True, exist_ok=True)
+            opened = QDesktopServices.openUrl(QUrl.fromLocalFile(str(folder)))
+            if not opened:
+                raise RuntimeError("Dosya yöneticisi açılamadı.")
+            app_logger.info(f"Veri klasörü açıldı: {folder}")
+        except Exception as exc:  # noqa: BLE001
+            app_logger.exception("Veri klasörü açılırken hata")
+            QMessageBox.critical(
+                self,
+                "Hata",
+                f"Veri klasörü açılamadı:\n{folder}\n\n{exc}",
+            )
 
     def _backup_database(self) -> None:
         try:

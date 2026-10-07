@@ -84,6 +84,9 @@ class Paths:
     """Uygulamanın kullandığı tüm dosya/klasör yollarını tutar."""
 
     base_dir: Path = BASE_DIR                    # kaynaklar (salt okunur)
+    # Veri kök dizini: veritabanı + logs + exports birlikte burada saklanır
+    # (frozen modda kalıcı kullanıcı dizini, bkz. USER_DATA_DIR)
+    user_data_root: Path = USER_DATA_DIR
     app_dir: Path = BASE_DIR / "app"
     data_dir: Path = BASE_DIR / "app" / "data"
     # Veritabanı: frozen modda kalıcı kullanıcı dizininde (bkz. USER_DATA_DIR)
